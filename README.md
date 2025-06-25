@@ -1,10 +1,1 @@
-https://drive.google.com/drive/folders/19lyV3XRA7nwvRft51xeEQmUa823BZEj_?usp=sharing
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=
-DB_NAME=oungbeefshopsql
-
-LINE_CHANNEL_SECRET=c5e6946e20a56d054c08e12b33dd3483
-LINE_CHANNEL_ID=U80a4ed68809289ca53b0b888d31f5a91
-LINE_CHANNEL_ACCESS_TOKEN=O7Ai7QCf/b8e6xmtbfY39c/Qk6JekNqmowL+gr/9iuey3T2Oizkyizm4M+RbCR0Do+Po9DewQqxsJ3ZMXUhLtAis0UK15EOtJ0q613gGBWcBugiB9j/HMyBVVigMJyHr38k53T05J9gWmKSkX7U8vQdB04t89/1O/w1cDnyilFU=
-DEFAULT_MEMBER_RICH_MENU=richmenu-39a7017fde1442f3535e2da972a9ff9e
+https://drive.google.com/drive/folders/19lyV3XRA7nwvRft51xeEQmUa823BZEj_?usp=sharin
