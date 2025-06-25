@@ -29,7 +29,7 @@ DB_USER=root
 DB_PASSWORD=
 DB_NAME=oungbeefshopsql
 
-*** เป็น key ของ linebot หาได้ในการสร้าง line developers
+*** เป็น key ของ linebot หาได้ในการสร้างบอทใน line developers
 LINE_CHANNEL_SECRET=
 LINE_CHANNEL_ID=
 LINE_CHANNEL_ACCESS_TOKEN=
