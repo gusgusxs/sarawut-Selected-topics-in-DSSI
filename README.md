@@ -48,3 +48,5 @@ DEFAULT_MEMBER_RICH_MENU=
  cd backend
  npm start ขั้นตอนนี้ต้องทำการเปิด Xampp ก่อน
 ```
+## prom_log
+https://drive.google.com/file/d/1FNvOfaVaEHJnS4YVv9dA0fYRGtO_kVg_/view?usp=sharing
