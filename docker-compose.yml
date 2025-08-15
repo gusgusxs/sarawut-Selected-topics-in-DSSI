@@ -3,39 +3,10 @@ services:
     build:
       context: ./Frontend
       dockerfile: Dockerfile
-    container_name: beefshop-frontend
+    working_dir: /app
     ports:
       - "3000:3000"
-    command: npm run dev -- --host 0.0.0.0 --port 3000
     volumes:
-      - ./Frontend:/app
-      - /app/node_modules
-
-  backend:
-    build:
-      context: ./Backend
-      dockerfile: Dockerfile
-    container_name: beefshop-backend
-    ports:
-      - "8888:8888"
-    environment:
-      DB_HOST: db
-      DB_USER: root
-      DB_PASSWORD: example
-      DB_NAME: oungbeefshopsql
-    depends_on:
-      - db
-
-  db:
-    image: mysql:8
-    container_name: beefshop-db
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: oungbeefshopsql
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-
-volumes:
-  mysql_data: {}
+      - ./Frontend:/app           
+      - /app/node_modules        
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0 --port 3000"
