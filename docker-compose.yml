@@ -1,12 +1,62 @@
+version: "3.8"
+
 services:
   frontend:
     build:
-      context: .                   
-      dockerfile: Dockerfile       
+      context: .
+      dockerfile: Dockerfile
     working_dir: /app
-    ports:
-      - "3000:3000"
+    expose:
+      - "10651"
     volumes:
-      - ./Frontend:/app            
+      - ./Frontend:/app
       - /app/node_modules
-    command: sh -c "npm install && npm run dev -- --host 0.0.0.0 --port 3000"
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0 --port 10651"
+    labels:
+      - "traefik.http.routers.frontend.rule=PathPrefix(`/s65114540651`)"
+      - "traefik.http.services.frontend.loadbalancer.server.port=10651"
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    working_dir: /app
+    expose:
+      - "20651"
+    volumes:
+      - ./Backend:/app
+      - /app/node_modules
+    env_file:
+      - ./Backend/.env
+    depends_on:
+      - db
+    command: sh -c "npm install && node server.js"
+    labels:
+      - "traefik.http.routers.backend.rule=PathPrefix(`/s65114540651/backend`)"
+      - "traefik.http.services.backend.loadbalancer.server.port=20651"
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: appdb
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: apppass
+    expose:
+      - "5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  traefik:
+    image: traefik:v3.0
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"       # HTTP
+      - "8080:8080"   # Dashboard
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+volumes:
+  db_data:
